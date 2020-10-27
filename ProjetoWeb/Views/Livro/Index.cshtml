@@ -1,0 +1,55 @@
+﻿@{
+    List <Livro> livros = ViewBag.Livros;
+}
+
+@* Assim faz um Comentário *@
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <title>Gerenciamento dos Livros</title>
+</head>
+
+<body>
+    <h2>Gerenciamento dos Livros</h2>
+
+    <a asp-action="Cadastrar" asp-controller="Livro">Cadastrar Livro</a> <br />
+
+    <table>
+        <thead>
+            <tr>
+                <th>Nome</th>
+                <th>Autor</th>
+                <th>Editora</th>
+                <th>Quantidade</th>
+                <th>Número de Páginas</th>
+                <th>Ano de Publicação</th>
+                <th>Criado em</th>
+                <th></th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (Livro livroCadastrado in livros)
+            {
+            <tr>
+                <td>@livroCadastrado.Nome</td>
+                <td>@livroCadastrado.Autor</td>
+                <td>@livroCadastrado.Editora</td>
+                <td>@livroCadastrado.Quantidade</td>
+                <td>@livroCadastrado.NumPag</td>
+                <td>@livroCadastrado.AnoPub</td>
+                <td>@livroCadastrado.CriadoEm</td>
+                <td> <a asp-action="Remover" asp-controller="Livro" asp-route-id="@livroCadastrado.Id">Remover</a> </td>
+                <td> <a asp-action="Alterar" asp-controller="Livro" asp-route-id="@livroCadastrado.Id">Alterar</a> </td>
+            </tr>
+            }
+        </tbody>
+    </table>
+
+    <span><b>Quantia de Livros Cadastrados: </b> @livros.Count </span> <br />
+    <span><b>Dados Atualizados: </b> @DateTime.Now </span>
+
+</body>
+</html>

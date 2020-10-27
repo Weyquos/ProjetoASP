@@ -1,0 +1,39 @@
+﻿<!DOCTYPE html>
+
+<html>
+<head>
+    <title>Cadastro dos Livros</title>
+</head>
+
+<body>
+
+    <h2>Cadastro dos Livros</h2>
+
+    <form asp-action="Cadastrar" asp-controller="Livro" method="post">
+        <fieldset>
+            <legend>Cadastrar Produto</legend>
+
+            <label>Nome: </label>
+            <input name="Nome" type="text" placeholder="Nome do Livro" required /> <br />
+
+            <label>Autor: </label>
+            <input name="Autor" type="text" placeholder="Autor" required /> <br />
+
+            <label>Editora: </label>
+            <input name="Editora" type="text" placeholder="Editora" required /> <br />
+
+            <label>Número de Páginas: </label>
+            <input name="NumPag" type="text" placeholder="Número de Páginas" required /> <br />
+
+            <label>Quantidade: </label>
+            <input name="Quantidade" type="text" placeholder="Quantidade" required /> <br />
+
+            <label>Ano de Publicação: </label>
+            <input name="AnoPub" type="text" placeholder="Ano de Publicação" required /> <br />
+
+            <input type="submit" value="Cadastrar" />
+        </fieldset>
+    </form>
+
+    </body>
+</html>

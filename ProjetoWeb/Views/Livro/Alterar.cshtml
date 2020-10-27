@@ -1,0 +1,45 @@
+﻿@{ 
+    Livro livro = ViewBag.Livro;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <title>Alterar Livros</title>
+</head>
+
+<body>
+
+    <h2>Alterar Livros</h2>
+
+    <form asp-action="Alterar" asp-controller="Livro" method="post">
+        <fieldset>
+            <legend>Alterar Produto</legend>
+
+            <input value="@livro.Id" name="Id" type="hidden"/>
+
+            <label for="Nome">Nome: </label>
+            <input value="@livro.Nome" name="Nome" type="text" placeholder="Nome do Livro" /> <br />
+
+            <label for="Autor">Autor: </label>
+            <input value="@livro.Autor" name="Autor" type="text" placeholder="Autor" /> <br />
+
+            <label for="Editora">Editora: </label>
+            <input value="@livro.Editora" name="Editora" type="text" placeholder="Editora" /> <br />
+
+            <label for="NumPag">Número de Páginas: </label>
+            <input value="@livro.NumPag" name="NumPag" type="text" placeholder="Número de Páginas" /> <br />
+
+            <label for="Quantidade">Quantidade: </label>
+            <input value="@livro.Quantidade" name="Quantidade" type="text" placeholder="Quantidade" /> <br />
+
+            <label for="AnoPub">Ano de Publicação: </label>
+            <input value="@livro.AnoPub" name="AnoPub" type="text" placeholder="Ano de Publicação" /> <br />
+
+            <input type="submit" value="Salvar" />
+        </fieldset>
+    </form>
+
+    </body>
+</html>
