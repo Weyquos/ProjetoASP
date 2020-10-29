@@ -1,6 +1,4 @@
-﻿@{ 
-    Livro livro = ViewBag.Livro;
-}
+﻿@model Livro
 
 <!DOCTYPE html>
 
@@ -17,25 +15,31 @@
         <fieldset>
             <legend>Alterar Produto</legend>
 
-            <input value="@livro.Id" name="Id" type="hidden"/>
+            <input asp-for="Id" type="hidden" />
 
-            <label for="Nome">Nome: </label>
-            <input value="@livro.Nome" name="Nome" type="text" placeholder="Nome do Livro" /> <br />
+            <label asp-for="Nome">Nome: </label>
+            <input asp-for="Nome" type="text" placeholder="Nome do Livro" />
+            <span asp-validation-for="Nome"></span><br />
 
-            <label for="Autor">Autor: </label>
-            <input value="@livro.Autor" name="Autor" type="text" placeholder="Autor" /> <br />
+            <label asp-for="Autor">Autor: </label>
+            <input asp-for="Autor" type="text" placeholder="Autor" />
+            <span asp-validation-for="Autor"></span><br />
 
-            <label for="Editora">Editora: </label>
-            <input value="@livro.Editora" name="Editora" type="text" placeholder="Editora" /> <br />
+            <label asp-for="Editora">Editora: </label>
+            <input asp-for="Editora" type="text" placeholder="Editora" />
+            <span asp-validation-for="Editora"></span><br />
 
-            <label for="NumPag">Número de Páginas: </label>
-            <input value="@livro.NumPag" name="NumPag" type="text" placeholder="Número de Páginas" /> <br />
+            <label asp-for="NumPag">Número de Páginas: </label>
+            <input asp-for="NumPag" type="text" placeholder="Número de Páginas" />
+            <span asp-validation-for="NumPag"></span><br />
 
-            <label for="Quantidade">Quantidade: </label>
-            <input value="@livro.Quantidade" name="Quantidade" type="text" placeholder="Quantidade" /> <br />
+            <label asp-for="Quantidade">Quantidade: </label>
+            <input asp-for="Quantidade" type="text" placeholder="Quantidade" />
+            <span asp-validation-for="Quantidade"></span><br />
 
-            <label for="AnoPub">Ano de Publicação: </label>
-            <input value="@livro.AnoPub" name="AnoPub" type="text" placeholder="Ano de Publicação" /> <br />
+            <label asp-for="AnoPub">Ano de Publicação: </label>
+            <input asp-for="AnoPub" type="text" placeholder="Ano de Publicação" />
+            <span asp-validation-for="AnoPub"></span><br />
 
             <input type="submit" value="Salvar" />
         </fieldset>

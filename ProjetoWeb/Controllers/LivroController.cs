@@ -15,28 +15,23 @@ namespace ProjetoWeb.Controllers
 
         public IActionResult Index()
         {
-            ViewBag.Livros = _livroDAO.Listar();
-            return View();
+            return View(_livroDAO.Listar());
         }
         
         public IActionResult Cadastrar() => View();
 
         [HttpPost]
-        public IActionResult Cadastrar(string Nome, string Autor, string Editora, int NumPag, int Quantidade, int AnoPub)
+        public IActionResult Cadastrar(Livro livro)
         {
-            Livro livro = new Livro 
+            if (ModelState.IsValid)
             {
-                Nome = Nome,
-                Autor = Autor,
-                Editora = Editora,
-                NumPag = NumPag,
-                Quantidade = Quantidade,
-                AnoPub = AnoPub
-            };
-
-            _livroDAO.Cadastrar(livro);
-
-            return RedirectToAction("Index", "Livro");
+                if (_livroDAO.Cadastrar(livro))
+                {
+                    return RedirectToAction("Index", "Livro");
+                }
+                ModelState.AddModelError("", "Já existe um livro cadastrado com esse nome.");              
+            }
+            return View(livro);
         }
 
         public IActionResult Remover(int id)
@@ -46,24 +41,19 @@ namespace ProjetoWeb.Controllers
         }
 
         public IActionResult Alterar(int id)
-        {
-            ViewBag.Livro = _livroDAO.BuscarPorId(id);
-            return View();
+        {     
+            return View(_livroDAO.BuscarPorId(id));
         }
 
         [HttpPost]
-        public IActionResult Alterar(int Id, string Nome, string Autor, string Editora, int NumPag, int Quantidade, int AnoPub)
+        public IActionResult Alterar(Livro livro)
         {
-            Livro livro = _livroDAO.BuscarPorId(Id);
-            livro.Nome = Nome;
-            livro.Autor = Autor;
-            livro.Editora = Editora;
-            livro.NumPag = NumPag;
-            livro.Quantidade = Quantidade;
-
-            _livroDAO.Alterar(livro);
-
-            return RedirectToAction("Index", "Livro");
+            if (ModelState.IsValid)
+            {
+                _livroDAO.Alterar(livro);
+                return RedirectToAction("Index", "Livro");
+            }
+            return View(livro);
         }
         
     }

@@ -13,10 +13,16 @@ namespace ProjetoWeb.DAL
 
         public List<Livro> Listar() => _context.Livros.ToList();
         public Livro BuscarPorId(int id) => _context.Livros.Find(id);
-        public void Cadastrar(Livro livro)
+        public Livro BuscarPorNome(string nome) => _context.Livros.FirstOrDefault(x => x.Nome == nome);
+        public bool Cadastrar(Livro livro)
         {
-            _context.Livros.Add(livro);
-            _context.SaveChanges();
+            if(BuscarPorNome(livro.Nome) == null)
+            {
+                _context.Livros.Add(livro);
+                _context.SaveChanges();
+                return true;
+            }
+            return false;
         }
         public void Remover(int id)
         {

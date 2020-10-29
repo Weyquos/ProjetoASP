@@ -1,4 +1,6 @@
-﻿<!DOCTYPE html>
+﻿@model Livro 
+
+<!DOCTYPE html>
 
 <html>
 <head>
@@ -13,23 +15,31 @@
         <fieldset>
             <legend>Cadastrar Produto</legend>
 
-            <label>Nome: </label>
-            <input name="Nome" type="text" placeholder="Nome do Livro" required /> <br />
+            <div asp-validation-summary="ModelOnly"></div>
 
-            <label>Autor: </label>
-            <input name="Autor" type="text" placeholder="Autor" required /> <br />
+            <label asp-for="Nome">Nome: </label>
+            <input asp-for="Nome" type="text" placeholder="Nome do Livro" />
+            <span asp-validation-for="Nome"></span><br />
 
-            <label>Editora: </label>
-            <input name="Editora" type="text" placeholder="Editora" required /> <br />
+            <label asp-for="Autor">Autor: </label>
+            <input asp-for="Autor" type="text" placeholder="Autor" />
+            <span asp-validation-for="Autor"></span><br />
 
-            <label>Número de Páginas: </label>
-            <input name="NumPag" type="text" placeholder="Número de Páginas" required /> <br />
+            <label asp-for="Editora">Editora: </label>
+            <input asp-for="Editora" type="text" placeholder="Editora" />
+            <span asp-validation-for="Editora"></span><br />
 
-            <label>Quantidade: </label>
-            <input name="Quantidade" type="text" placeholder="Quantidade" required /> <br />
+            <label asp-for="NumPag">Número de Páginas: </label>
+            <input asp-for="NumPag" type="text" placeholder="Número de Páginas" />
+            <span asp-validation-for="NumPag"></span><br />
 
-            <label>Ano de Publicação: </label>
-            <input name="AnoPub" type="text" placeholder="Ano de Publicação" required /> <br />
+            <label asp-for="Quantidade">Quantidade: </label>
+            <input asp-for="Quantidade" type="text" placeholder="Quantidade" />
+            <span asp-validation-for="Quantidade"></span><br />
+
+            <label asp-for="AnoPub">Ano de Publicação: </label>
+            <input asp-for="AnoPub" type="text" placeholder="Ano de Publicação" />
+            <span asp-validation-for="AnoPub"></span><br />
 
             <input type="submit" value="Cadastrar" />
         </fieldset>

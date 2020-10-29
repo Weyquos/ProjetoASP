@@ -1,6 +1,4 @@
-﻿@{
-    List <Livro> livros = ViewBag.Livros;
-}
+﻿@model List<Livro>  
 
 @* Assim faz um Comentário *@
 
@@ -31,7 +29,7 @@
             </tr>
         </thead>
         <tbody>
-            @foreach (Livro livroCadastrado in livros)
+            @foreach (Livro livroCadastrado in Model)
             {
             <tr>
                 <td>@livroCadastrado.Nome</td>
@@ -48,7 +46,7 @@
         </tbody>
     </table>
 
-    <span><b>Quantia de Livros Cadastrados: </b> @livros.Count </span> <br />
+    <span><b>Quantia de Livros Cadastrados: </b> @Model.Count </span> <br />
     <span><b>Dados Atualizados: </b> @DateTime.Now </span>
 
 </body>

@@ -10,5 +10,6 @@ namespace ProjetoWeb.Models
     {
         public Context(DbContextOptions options) : base(options) { }
         public DbSet<Livro> Livros { get; set; }
+        public DbSet<Categoria> Categorias { get; set; }
     }
 }
