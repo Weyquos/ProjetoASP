@@ -72,3 +72,4 @@ C:\Users\Weyquos\source\repos\ProjetoWeb\ProjetoWeb\bin\Debug\netcoreapp3.1\Micr
 C:\Users\Weyquos\source\repos\ProjetoWeb\ProjetoWeb\obj\Debug\netcoreapp3.1\ProjetoWeb.csproj.CoreCompileInputs.cache
 C:\Users\Weyquos\source\repos\ProjetoWeb\ProjetoWeb\obj\Debug\netcoreapp3.1\ProjetoWeb.MvcApplicationPartsAssemblyInfo.cache
 C:\Users\Weyquos\source\repos\ProjetoWeb\ProjetoWeb\obj\Debug\netcoreapp3.1\Razor\Views\Livro\Alterar.cshtml.g.cs
+C:\Users\Weyquos\source\repos\ProjetoWeb\ProjetoWeb\obj\Debug\netcoreapp3.1\Razor\Views\Shared\_Layout.cshtml.g.cs
