@@ -27,6 +27,7 @@ namespace ProjetoWeb
         {
             //Configuração de injeção de dependência do Banco de Dados
             services.AddScoped<LivroDAO>();
+            services.AddScoped<CategoriaDAO>();
             services.AddDbContext<Context>(options => options.UseSqlServer(Configuration.GetConnectionString("Connection")));
             services.AddControllersWithViews();
         }

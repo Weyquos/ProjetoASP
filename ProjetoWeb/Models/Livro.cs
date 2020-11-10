@@ -36,5 +36,7 @@ namespace ProjetoWeb.Models
         [Required(ErrorMessage = "Campo Obrigatório")]
         [Range(1, 3000, ErrorMessage = "Ano de Publicação inválido")]
         public int AnoPub { get; set; }
+
+        public string Imagem { get; set; }
     }
 }

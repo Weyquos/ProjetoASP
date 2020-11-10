@@ -1,46 +1,47 @@
-﻿@model List<Livro>  
-@{ 
-    Layout = "~/Views/Shared/_Layout.cshtml";
-}
+﻿@model List<Livro>
 @* Assim faz um Comentário *@
-        <h4>Gerenciamento dos Livros</h4>
 
-        <a asp-action="Cadastrar" asp-controller="Livro" class="btn btn-info">Cadastrar Livro</a> <br />
+<h4>Gerenciamento dos Livros</h4>
 
-        <br />
+<br /><a asp-action="Index" asp-controller="Categoria" class="btn btn-link">Ir para Categorias</a><br />
 
-        <table class="table table-hover table-striped">
-            <thead>
-                <tr>
-                    <th>Nome</th>
-                    <th>Autor</th>
-                    <th>Editora</th>
-                    <th>Quantidade</th>
-                    <th>Número de Páginas</th>
-                    <th>Ano de Publicação</th>
-                    <th>Criado em</th>
-                    <th></th>
-                    <th></th>
-                </tr>
-            </thead>
-            <tbody>
-                @foreach (Livro livroCadastrado in Model)
-                {
-                    <tr>
-                        <td>@livroCadastrado.Nome</td>
-                        <td>@livroCadastrado.Autor</td>
-                        <td>@livroCadastrado.Editora</td>
-                        <td>@livroCadastrado.Quantidade</td>
-                        <td>@livroCadastrado.NumPag</td>
-                        <td>@livroCadastrado.AnoPub</td>
-                        <td>@livroCadastrado.CriadoEm</td>
-                        <td> <a asp-action="Remover" asp-controller="Livro" asp-route-id="@livroCadastrado.Id" class="btn btn-danger">Remover</a> </td>
-                        <td> <a asp-action="Alterar" asp-controller="Livro" asp-route-id="@livroCadastrado.Id" class="btn btn-warning">Alterar</a> </td>
-                    </tr>
-                }
-            </tbody>
-        </table>
+<br /><a asp-action="Cadastrar" asp-controller="Livro" class="btn btn-info">Cadastrar Livro</a><br /><br />
 
-        <p><b>Quantia de Livros Cadastrados: </b> @Model.Count </p> <br />
-        <p><b>Dados Atualizados: </b> @DateTime.Now </p>
+<table class="table table-hover table-striped">
+    <thead>
+        <tr>
+            <th>Nome</th>
+            <th>Autor</th>
+            <th>Editora</th>
+            <th>Quantidade</th>
+            <th>Número de Páginas</th>
+            <th>Ano de Publicação</th>
+            <th>Criado em</th>
+            <th>Imagem</th>
+            <th></th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (Livro livroCadastrado in Model)
+        {
+            <tr>
+                <td>@livroCadastrado.Nome</td>
+                <td>@livroCadastrado.Autor</td>
+                <td>@livroCadastrado.Editora</td>
+                <td>@livroCadastrado.Quantidade</td>
+                <td>@livroCadastrado.NumPag</td>
+                <td>@livroCadastrado.AnoPub</td>
+                <td>@livroCadastrado.CriadoEm</td>
+                <td> <img src="~/images/@livroCadastrado.Imagem" alt="@livroCadastrado.Nome" style="width:120px; height:120px;" /> </td>
+                <td> <a asp-action="Remover" asp-controller="Livro" asp-route-id="@livroCadastrado.Id" class="btn btn-danger">Remover</a> </td>
+                <td><a asp-action="Alterar" asp-controller="Livro" asp-route-id="@livroCadastrado.Id" class="btn btn-warning">Editar</a> </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+<p><b>Quantia de Livros Cadastrados: </b> @Model.Count </p>
+<br />
+<p><b>Dados Atualizados: </b> @DateTime.Now </p>
 

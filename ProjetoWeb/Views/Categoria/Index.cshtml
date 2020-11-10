@@ -1,0 +1,38 @@
+﻿@model List<Categoria>
+@* Assim faz um Comentário *@
+
+<h4>Gerenciamento das Categorias</h4>
+
+<br /><a asp-action="Index" asp-controller="Livro" class="btn btn-link">Ir para Livros</a>
+<br />
+
+<br /><a asp-action="Cadastrar" asp-controller="Categoria" class="btn btn-info">Cadastrar Categoria</a>
+<br />
+<br />
+
+<table class="table table-hover table-striped">
+    <thead>
+        <tr>
+            <th>Nome</th>
+            <th>Criado em</th>
+            <th></th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (Categoria categoriaCadastrada in Model)
+        {
+            <tr>
+                <td>@categoriaCadastrada.Nome</td>
+                <td>@categoriaCadastrada.CriadoEm</td>
+                <td> <a asp-action="Remover" asp-controller="Categoria" asp-route-id="@categoriaCadastrada.Id" class="btn btn-danger">Remover</a> </td>
+                <td> <a asp-action="Alterar" asp-controller="Categoria" asp-route-id="@categoriaCadastrada.Id" class="btn btn-warning">Editar</a> </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+<p><b>Quantia de Categorias Cadastradas: </b> @Model.Count </p>
+<br />
+<p><b>Dados Atualizados: </b> @DateTime.Now </p>
+

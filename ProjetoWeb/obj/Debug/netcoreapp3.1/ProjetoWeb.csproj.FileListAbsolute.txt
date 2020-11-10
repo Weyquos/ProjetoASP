@@ -73,3 +73,7 @@ C:\Users\Weyquos\source\repos\ProjetoWeb\ProjetoWeb\obj\Debug\netcoreapp3.1\Proj
 C:\Users\Weyquos\source\repos\ProjetoWeb\ProjetoWeb\obj\Debug\netcoreapp3.1\ProjetoWeb.MvcApplicationPartsAssemblyInfo.cache
 C:\Users\Weyquos\source\repos\ProjetoWeb\ProjetoWeb\obj\Debug\netcoreapp3.1\Razor\Views\Livro\Alterar.cshtml.g.cs
 C:\Users\Weyquos\source\repos\ProjetoWeb\ProjetoWeb\obj\Debug\netcoreapp3.1\Razor\Views\Shared\_Layout.cshtml.g.cs
+C:\Users\Weyquos\source\repos\ProjetoWeb\ProjetoWeb\obj\Debug\netcoreapp3.1\Razor\Views\_ViewStart.cshtml.g.cs
+C:\Users\Weyquos\source\repos\ProjetoWeb\ProjetoWeb\obj\Debug\netcoreapp3.1\Razor\Views\Categoria\Alterar.cshtml.g.cs
+C:\Users\Weyquos\source\repos\ProjetoWeb\ProjetoWeb\obj\Debug\netcoreapp3.1\Razor\Views\Categoria\Cadastrar.cshtml.g.cs
+C:\Users\Weyquos\source\repos\ProjetoWeb\ProjetoWeb\obj\Debug\netcoreapp3.1\Razor\Views\Categoria\Index.cshtml.g.cs

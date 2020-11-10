@@ -1,7 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using ProjetoWeb.DAL;
 using ProjetoWeb.Models;
@@ -11,7 +14,12 @@ namespace ProjetoWeb.Controllers
     public class LivroController : Controller
     {
         private readonly LivroDAO _livroDAO;
-        public LivroController(LivroDAO livroDAO) => _livroDAO = livroDAO;
+        private readonly IWebHostEnvironment _hosting;
+        public LivroController(LivroDAO livroDAO, IWebHostEnvironment hosting)
+        {
+            _livroDAO = livroDAO;
+            _hosting = hosting;
+        }
 
         public IActionResult Index()
         {
@@ -21,10 +29,21 @@ namespace ProjetoWeb.Controllers
         public IActionResult Cadastrar() => View();
 
         [HttpPost]
-        public IActionResult Cadastrar(Livro livro)
+        public IActionResult Cadastrar(Livro livro, IFormFile file)
         {
             if (ModelState.IsValid)
             {
+                if(file != null)
+                {
+                    string arquivo = $"{Guid.NewGuid()}{Path.GetExtension(file.FileName)}"; 
+                    string caminho = Path.Combine(_hosting.WebRootPath, "images", arquivo);
+                    file.CopyTo(new FileStream(caminho, FileMode.CreateNew));
+                    livro.Imagem = arquivo;
+                }
+                else
+                {
+                    livro.Imagem = "semimagem.jpg";
+                }
                 if (_livroDAO.Cadastrar(livro))
                 {
                     return RedirectToAction("Index", "Livro");
