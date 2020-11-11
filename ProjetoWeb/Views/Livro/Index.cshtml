@@ -18,25 +18,28 @@
             <th>Ano de Publicação</th>
             <th>Criado em</th>
             <th>Imagem</th>
-            <th></th>
-            <th></th>
+            <th>Ações</th>
         </tr>
     </thead>
     <tbody>
         @foreach (Livro livroCadastrado in Model)
         {
-            <tr>
-                <td>@livroCadastrado.Nome</td>
-                <td>@livroCadastrado.Autor</td>
-                <td>@livroCadastrado.Editora</td>
-                <td>@livroCadastrado.Quantidade</td>
-                <td>@livroCadastrado.NumPag</td>
-                <td>@livroCadastrado.AnoPub</td>
-                <td>@livroCadastrado.CriadoEm</td>
-                <td> <img src="~/images/@livroCadastrado.Imagem" alt="@livroCadastrado.Nome" style="width:120px; height:120px;" /> </td>
-                <td> <a asp-action="Remover" asp-controller="Livro" asp-route-id="@livroCadastrado.Id" class="btn btn-danger">Remover</a> </td>
-                <td><a asp-action="Alterar" asp-controller="Livro" asp-route-id="@livroCadastrado.Id" class="btn btn-warning">Editar</a> </td>
-            </tr>
+        <tr>
+            <td>@livroCadastrado.Nome</td>
+            <td>@livroCadastrado.Autor</td>
+            <td>@livroCadastrado.Editora</td>
+            <td>@livroCadastrado.Quantidade</td>
+            <td>@livroCadastrado.NumPag</td>
+            <td>@livroCadastrado.AnoPub</td>
+            <td>@livroCadastrado.CriadoEm</td>
+            <td> <img src="~/images/@livroCadastrado.Imagem" alt="@livroCadastrado.Nome" style="width:120px; height:120px;" /> </td>
+            <td>
+                <div>
+                    <a asp-action="Remover" asp-controller="Livro" asp-route-id="@livroCadastrado.Id" class="btn btn-danger">Remover</a>
+                    <a asp-action="Alterar" asp-controller="Livro" asp-route-id="@livroCadastrado.Id" class="btn btn-warning">Editar</a>
+                </div>
+            </td>
+        </tr>
         }
     </tbody>
 </table>

@@ -65,13 +65,23 @@ namespace ProjetoWeb.Controllers
         }
 
         [HttpPost]
-        public IActionResult Alterar(Livro livro)
+        public IActionResult Alterar(Livro livro, IFormFile file)
         {
             if (ModelState.IsValid)
             {
-                _livroDAO.Alterar(livro);
-                return RedirectToAction("Index", "Livro");
-            }
+                //Ver como faz para puxar a imagem antiga caso uma nova não tenha sido selecionada.
+                if (file != null)
+                {
+                    string arquivo = $"{Guid.NewGuid()}{Path.GetExtension(file.FileName)}";
+                    string caminho = Path.Combine(_hosting.WebRootPath, "images", arquivo);
+                    file.CopyTo(new FileStream(caminho, FileMode.CreateNew));
+                    livro.Imagem = arquivo;
+                }
+                {
+                    _livroDAO.Alterar(livro);
+                    return RedirectToAction("Index", "Livro");
+                }
+            }          
             return View(livro);
         }
         

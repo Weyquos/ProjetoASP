@@ -15,8 +15,7 @@
         <tr>
             <th>Nome</th>
             <th>Criado em</th>
-            <th></th>
-            <th></th>
+            <th>Ações</th>          
         </tr>
     </thead>
     <tbody>
@@ -25,8 +24,12 @@
             <tr>
                 <td>@categoriaCadastrada.Nome</td>
                 <td>@categoriaCadastrada.CriadoEm</td>
-                <td> <a asp-action="Remover" asp-controller="Categoria" asp-route-id="@categoriaCadastrada.Id" class="btn btn-danger">Remover</a> </td>
-                <td> <a asp-action="Alterar" asp-controller="Categoria" asp-route-id="@categoriaCadastrada.Id" class="btn btn-warning">Editar</a> </td>
+                <td>
+                    <div>
+                        <a asp-action="Remover" asp-controller="Categoria" asp-route-id="@categoriaCadastrada.Id" class="btn btn-danger">Remover</a>
+                        <a asp-action="Alterar" asp-controller="Categoria" asp-route-id="@categoriaCadastrada.Id" class="btn btn-warning">Editar</a>
+                    </div>
+                </td>    
             </tr>
         }
     </tbody>
