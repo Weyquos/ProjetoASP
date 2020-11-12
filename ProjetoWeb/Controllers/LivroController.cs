@@ -88,10 +88,8 @@ namespace ProjetoWeb.Controllers
                     file.CopyTo(new FileStream(caminho, FileMode.CreateNew));
                     livro.Imagem = arquivo;
                 }
-                {
-                    _livroDAO.Alterar(livro);
-                    return RedirectToAction("Index", "Livro");
-                }
+                _livroDAO.Alterar(livro);
+                return RedirectToAction("Index", "Livro");
             }          
             return View(livro);
         }
