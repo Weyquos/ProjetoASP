@@ -10,7 +10,6 @@ namespace ProjetoWeb.DAL
     {
         private readonly Context _context;
         public CategoriaDAO(Context context) => _context = context;
-
         public List<Categoria> Listar() => _context.Categorias.ToList();
         public Categoria BuscarPorId(int id) => _context.Categorias.Find(id);
         public Categoria BuscarPorNome(string nome) => _context.Categorias.FirstOrDefault(x => x.Nome == nome);

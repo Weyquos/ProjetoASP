@@ -10,10 +10,10 @@ namespace ProjetoWeb.Models
     [Table("Categorias")]
     public class Categoria : BaseModel
     {
+        public List<Livro> Livros { get; set; }
         [Required(ErrorMessage = "Campo Obrigatório")]
         [MaxLength(100, ErrorMessage ="Máximo de 100 Caracteres")]
         [MinLength(1, ErrorMessage = "Campo não pode ser vazio")]
-        public string Nome { get; set; }
-       
+        public string Nome { get; set; }      
     }
 }

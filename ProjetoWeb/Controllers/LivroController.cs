@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Rendering;
 using ProjetoWeb.DAL;
 using ProjetoWeb.Models;
 
@@ -15,18 +16,25 @@ namespace ProjetoWeb.Controllers
     {
         private readonly LivroDAO _livroDAO;
         private readonly IWebHostEnvironment _hosting;
-        public LivroController(LivroDAO livroDAO, IWebHostEnvironment hosting)
+        private readonly CategoriaDAO _categoriaDAO;
+        public LivroController(LivroDAO livroDAO, CategoriaDAO categoriaDAO,IWebHostEnvironment hosting)
         {
+            _categoriaDAO = categoriaDAO;
             _livroDAO = livroDAO;
             _hosting = hosting;
         }
 
         public IActionResult Index()
         {
+            ViewBag.Title = "Gerenciamento de Livros";
             return View(_livroDAO.Listar());
         }
-        
-        public IActionResult Cadastrar() => View();
+
+        public IActionResult Cadastrar()
+        {
+            ViewBag.Categorias = new SelectList(_categoriaDAO.Listar(), "Id", "Nome");
+            return View();
+        }
 
         [HttpPost]
         public IActionResult Cadastrar(Livro livro, IFormFile file)
@@ -44,12 +52,14 @@ namespace ProjetoWeb.Controllers
                 {
                     livro.Imagem = "semimagem.jpg";
                 }
+                livro.Categoria = _categoriaDAO.BuscarPorId(livro.CategoriaId);
                 if (_livroDAO.Cadastrar(livro))
                 {
                     return RedirectToAction("Index", "Livro");
                 }
                 ModelState.AddModelError("", "Já existe um livro cadastrado com esse nome.");              
             }
+            ViewBag.Categorias = new SelectList(_categoriaDAO.Listar(), "Id", "Nome");
             return View(livro);
         }
 
@@ -60,7 +70,9 @@ namespace ProjetoWeb.Controllers
         }
 
         public IActionResult Alterar(int id)
-        {     
+        {
+            //Ver como faz para puxar a imagem antiga caso uma nova não tenha sido selecionada.
+            ViewBag.Categorias = new SelectList(_categoriaDAO.Listar(), "Id", "Nome");
             return View(_livroDAO.BuscarPorId(id));
         }
 
@@ -69,7 +81,6 @@ namespace ProjetoWeb.Controllers
         {
             if (ModelState.IsValid)
             {
-                //Ver como faz para puxar a imagem antiga caso uma nova não tenha sido selecionada.
                 if (file != null)
                 {
                     string arquivo = $"{Guid.NewGuid()}{Path.GetExtension(file.FileName)}";

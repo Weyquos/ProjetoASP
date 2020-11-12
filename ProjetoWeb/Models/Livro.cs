@@ -10,6 +10,16 @@ namespace ProjetoWeb.Models
     [Table("Livros")]
     public class Livro : BaseModel
     {
+        public Livro()
+        {
+            Status = "Disponível";
+        }
+
+        [ForeignKey("CategoriaId")]
+        public Categoria Categoria { get; set; }
+
+        public string Status { get; set; }
+
         [Required(ErrorMessage = "Campo Obrigatório")]
         [MaxLength(100, ErrorMessage ="Máximo de 100 Caracteres")]
         [MinLength(1, ErrorMessage = "Campo não pode ser vazio")]
@@ -38,5 +48,7 @@ namespace ProjetoWeb.Models
         public int AnoPub { get; set; }
 
         public string Imagem { get; set; }
+        
+        public int CategoriaId { get; set; }
     }
 }

@@ -1,4 +1,5 @@
-﻿using ProjetoWeb.Models;
+﻿using Microsoft.EntityFrameworkCore;
+using ProjetoWeb.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,10 +11,10 @@ namespace ProjetoWeb.DAL
     {
         private readonly Context _context;
         public LivroDAO(Context context) => _context = context;
-
-        public List<Livro> Listar() => _context.Livros.ToList();
+        public List<Livro> Listar() => _context.Livros.Include(x => x.Categoria).ToList();
         public Livro BuscarPorId(int id) => _context.Livros.Find(id);
         public Livro BuscarPorNome(string nome) => _context.Livros.FirstOrDefault(x => x.Nome == nome);
+        public List<Livro> BuscarPorCategoria(int id) => _context.Livros.Where(x => x.CategoriaId == id).ToList();
         public bool Cadastrar(Livro livro)
         {
             if(BuscarPorNome(livro.Nome) == null)

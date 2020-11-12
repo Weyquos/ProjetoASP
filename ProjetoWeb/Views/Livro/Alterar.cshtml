@@ -43,6 +43,13 @@
             </div>
 
             <div class="form-group">
+                <label asp-for="CategoriaId">Categoria: </label>
+                <select class="form-control" asp-items="@ViewBag.Categorias" asp-for="CategoriaId">
+                    <option> Selecione </option>
+                </select>
+            </div>
+
+            <div class="form-group">
                 <label asp-for="Imagem">Imagem: </label>
                 <input class="form-control-file" type="file" name="file" />
             </div>
