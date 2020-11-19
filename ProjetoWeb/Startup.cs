@@ -10,6 +10,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using ProjetoWeb.DAL;
 using ProjetoWeb.Models;
+using ProjetoWeb.Utils;
 
 namespace ProjetoWeb
 {
@@ -27,8 +28,12 @@ namespace ProjetoWeb
         {
             //Configuração de injeção de dependência do Banco de Dados
             services.AddScoped<LivroDAO>();
+            services.AddScoped<ItemAlugadoDAO>();
             services.AddScoped<CategoriaDAO>();
+            services.AddScoped<Sessao>();
+            services.AddHttpContextAccessor();
             services.AddDbContext<Context>(options => options.UseSqlServer(Configuration.GetConnectionString("Connection")));
+            services.AddSession();
             services.AddControllersWithViews();
         }
 
@@ -48,6 +53,8 @@ namespace ProjetoWeb
             app.UseRouting();
 
             app.UseAuthorization();
+
+            app.UseSession();
 
             app.UseEndpoints(endpoints =>
             {

@@ -13,8 +13,10 @@
         @foreach (Livro livroCadastrado in Model)
         {
         <div class="col-sm-3 text-center" style="margin-top:40px;">
-            <span>@livroCadastrado.Nome</span><br />
+            <span>@livroCadastrado.Nome</span><br />  
             <img src="~/images/@livroCadastrado.Imagem" alt="@livroCadastrado.Nome" class="img-thumbnail"/>
+            <br />
+            <a class="btn btn-primary" asp-action="AdicionarAoCarrinho" asp-controller="Home" asp-route-id="@livroCadastrado.Id">Adicionar ao Carrinho</a>
         </div>
         }
     </div>   

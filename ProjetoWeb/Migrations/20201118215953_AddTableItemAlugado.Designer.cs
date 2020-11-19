@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using ProjetoWeb.Models;
 
 namespace ProjetoWeb.Migrations
 {
     [DbContext(typeof(Context))]
-    partial class ContextModelSnapshot : ModelSnapshot
+    [Migration("20201118215953_AddTableItemAlugado")]
+    partial class AddTableItemAlugado
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -46,16 +48,10 @@ namespace ProjetoWeb.Migrations
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<string>("CarrinhoId")
-                        .HasColumnType("nvarchar(max)");
-
                     b.Property<DateTime>("CriadoEm")
                         .HasColumnType("datetime2");
 
                     b.Property<int?>("LivroId")
-                        .HasColumnType("int");
-
-                    b.Property<int>("Quantidade")
                         .HasColumnType("int");
 
                     b.HasKey("Id");

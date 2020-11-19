@@ -93,6 +93,5 @@ namespace ProjetoWeb.Controllers
             }          
             return View(livro);
         }
-        
     }
 }
