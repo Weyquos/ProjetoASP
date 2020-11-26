@@ -1,4 +1,7 @@
-﻿<!DOCTYPE html>
+﻿@inject Microsoft.AspNetCore.Identity.SignInManager<Usuario> SignInManager
+@inject Microsoft.AspNetCore.Identity.UserManager<Usuario> UserManager
+
+<!DOCTYPE html>
 
 <html>
 <head>
@@ -11,10 +14,34 @@
 
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
         <a class="navbar-brand" asp-controller="Home" asp-action="Index" asp-route-id="0"> Biblioteca </a>
-        <a class="navbar-brand" asp-controller="Livro" asp-action="Index"> Livros </a>
-        <a class="navbar-brand" asp-controller="Categoria" asp-action="Index"> Categorias </a>
-        <a class="navbar-brand " asp-controller="Usuario" asp-action="Index"> Usuários </a>
-        <a class="navbar-brand " asp-controller="Home" asp-action="CarrinhoAlugueis"> Meu Carrinho </a>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item active">
+                    <a class="nav-link" asp-action="Index" asp-controller="Livro">Livros</a>
+                </li>
+                <li class="nav-item active">
+                    <a class="nav-link" asp-action="Index" asp-controller="Categoria">Categorias</a>
+                </li>
+                <li class="nav-item active">
+                    <a class="nav-link" asp-action="Index" asp-controller="Usuario">Usuários</a>
+                </li>
+                <li class="nav-item active">
+                    <a class="nav-link" asp-action="CarrinhoAlugueis" asp-controller="Home">Meu Carrinho</a>
+                </li>
+                @if (SignInManager.IsSignedIn(User))
+                {
+                    <li class="nav-item active">
+                        <a class="nav-link" asp-action="Logout" asp-controller="Usuario">Logout</a>
+                    </li>
+                }
+                else
+                {
+                    <li class="nav-item active">
+                        <a class="nav-link" asp-action="Login" asp-controller="Usuario">Login</a>
+                    </li>
+                }
+            </ul>
+        </div>
     </nav>
 
     <br />

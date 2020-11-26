@@ -21,7 +21,6 @@
             <th>
                 @Html.DisplayNameFor(model => model.CriadoEm)
             </th>
-            <th></th>
         </tr>
     </thead>
     <tbody>
@@ -36,10 +35,6 @@
                 </td>
                 <td>
                     @Html.DisplayFor(modelItem => item.CriadoEm)
-                </td>
-                <td>
-                    <a asp-action="Edit" asp-route-id="@item.Id" class="btn btn-danger">Editar</a> 
-                    <a asp-action="Delete" asp-route-id="@item.Id" class="btn btn-warning">Deletar</a>
                 </td>
             </tr>
         }
