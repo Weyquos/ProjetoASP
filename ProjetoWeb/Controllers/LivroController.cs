@@ -116,5 +116,10 @@ namespace ProjetoWeb.Controllers
 
             return View(livro);
         }
+
+        /* Criar metodo Alugar e Devolver
+         
+         
+         */
     }
 }

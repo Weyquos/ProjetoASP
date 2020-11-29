@@ -15,6 +15,8 @@ namespace ProjetoWeb.DAL
         public Livro BuscarPorId(int id) => _context.Livros.Find(id);
         public Livro BuscarPorNome(string nome) => _context.Livros.FirstOrDefault(x => x.Nome == nome);
         public List<Livro> ListarPorCategoria(int id) => _context.Livros.Where(x => x.CategoriaId == id).ToList();
+
+        public List<Livro> ListarLivrosLocados() => _context.Livros.Include(x => x.Categoria).Where(x => x.Status.Equals("Locado")).ToList();
         public bool Cadastrar(Livro livro)
         {
             if(BuscarPorNome(livro.Nome) == null)

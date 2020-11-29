@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using ProjetoWeb.DAL;
 using ProjetoWeb.Models;
@@ -50,6 +51,13 @@ namespace ProjetoWeb.Controllers
             string carrinhoId = _sessao.BuscarCarrinhoId();
             return View(_itemAlugadoDAO.ListarPorCarrinhoId(carrinhoId));
         }
+        /* Adicionar na função a parte de puxar os itens alugados */
+        [Authorize]
+        public IActionResult MeusLivros()
+        {
+            return View(_livroDAO.ListarLivrosLocados());
+        }
+        
         public IActionResult Remover(int id)
         {
             _itemAlugadoDAO.Remover(id);

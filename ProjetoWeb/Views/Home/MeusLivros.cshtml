@@ -1,0 +1,52 @@
+﻿@model IEnumerable<ProjetoWeb.Models.Livro>
+
+@{ ViewData["Title"] = "MeusLivros"; }
+
+<fieldset>
+    <legend>Livros Alugados</legend>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.Nome)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Autor)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Editora)
+                </th>
+                <th>
+                    Alugado Em
+                </th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Nome)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Autor)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Editora)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.CriadoEm)
+                    </td>
+                    <td>
+                        <a asp-action="Devolver" asp-controller="#" asp-route-id="@item.Id" class="btn btn-warning">Devolver</a>
+                    </td>
+                </tr>
+
+            }
+        </tbody>
+    </table>
+</fieldset>
+
+<br />
+<p><b>Dados Atualizados: </b> @DateTime.Now </p>
