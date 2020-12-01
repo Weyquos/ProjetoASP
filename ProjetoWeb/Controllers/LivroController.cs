@@ -77,7 +77,6 @@ namespace ProjetoWeb.Controllers
 
         public IActionResult Alterar(int id)
         {
-            //Ver como faz para puxar a imagem antiga caso uma nova não tenha sido selecionada.
             ViewBag.Categorias = new SelectList(_categoriaDAO.Listar(), "Id", "Nome");
             return View(_livroDAO.BuscarPorId(id));
         }

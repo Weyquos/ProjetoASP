@@ -44,14 +44,21 @@ namespace ProjetoWeb.Controllers
         // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Email,Senha,Id,CriadoEm,ConfirmacaoSenha")] UsuarioView usuarioView)
+        public async Task<IActionResult> Create([Bind("Email,Senha,Id,CriadoEm,ConfirmacaoSenha,Cep,Cidade,Bairro,Logradouro,TipoLogradouro,Uf")] UsuarioView usuarioView)
         {
             if (ModelState.IsValid)
             {
                 Usuario usuario = new Usuario
                 {
                     UserName = usuarioView.Email,
-                    Email = usuarioView.Email
+                    Email = usuarioView.Email,
+                    Cep = usuarioView.Cep,
+                    Cidade = usuarioView.Cidade,
+                    Logradouro = usuarioView.Logradouro,
+                    TipoLogradouro = usuarioView.TipoLogradouro,
+                    Bairro = usuarioView.Bairro,
+                    Uf = usuarioView.Uf
+
                 };
                 IdentityResult resultado = await _userManager.CreateAsync(usuario, usuarioView.Senha);
                 if(resultado.Succeeded)
