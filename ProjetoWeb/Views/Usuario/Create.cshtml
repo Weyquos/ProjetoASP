@@ -73,7 +73,7 @@
     function BuscarCep() {
         var url = "http://republicavirtual.com.br/web_cep.php?cep=" + txtCep.value + "&formato=json";
 
-        fetch(url, { method: "GET" })
+        fetch(url, { method: "GET", mode: "no-cors" })
             .then(response => response.json())
             .then(json => {
                 txtBairro.value = json.bairro;

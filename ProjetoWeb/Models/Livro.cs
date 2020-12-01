@@ -35,9 +35,6 @@ namespace ProjetoWeb.Models
         [MinLength(1, ErrorMessage = "Campo não pode ser vazio")]
         public string Editora { get; set; }
 
-        [Required(ErrorMessage = "Campo Obrigatório")]
-        [Range(1,10000, ErrorMessage ="Quantia de Livros iguais limitada entre 1 e 10000")]
-        public int Quantidade { get; set; }
 
         [Required(ErrorMessage = "Campo Obrigatório")]
         [Range(1, 10000, ErrorMessage = "Quantia de páginas limitada entre 1 e 10000")]
