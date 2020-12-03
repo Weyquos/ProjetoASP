@@ -116,9 +116,18 @@ namespace ProjetoWeb.Controllers
             return View(livro);
         }
 
-        /* Criar metodo Alugar e Devolver
-         
-         
-         */
+        public IActionResult Alugar(int id)
+        {
+            Livro livro = _livroDAO.BuscarPorId(id);
+            _livroDAO.Alugar(id, livro);
+            return RedirectToAction("Index", "Livro");
+        }
+
+        public IActionResult Devolver(int id)
+        {
+            Livro livro = _livroDAO.BuscarPorId(id);
+            _livroDAO.Devolver(id, livro);
+            return RedirectToAction("Index", "Livro");
+        }
     }
 }

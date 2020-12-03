@@ -37,5 +37,45 @@ namespace ProjetoWeb.DAL
             _context.Livros.Update(livro);
             _context.SaveChanges();
         }
+
+        public bool Alugar(int id, Livro livro)
+        {
+
+            {
+                if (livro.Status == "Disponível")
+                {
+                    livro.Status = "Locado";
+                    _context.Livros.Update(livro);
+                    _context.SaveChanges();
+                    return true;
+                }
+
+                if (livro.Status == "Locado")
+                {
+                    return false;
+                }
+            }
+            return false;
+        }
+
+        public bool Devolver(int id, Livro livro)
+        {
+
+            {
+                if (livro.Status == "Locado")
+                {
+                    livro.Status = "Disponível";
+                    _context.Livros.Update(livro);
+                    _context.SaveChanges();
+                    return true;
+                }
+
+                if (livro.Status == "Disponível")
+                {
+                    return false;
+                }
+            }
+            return false;
+        }
     }
 }
