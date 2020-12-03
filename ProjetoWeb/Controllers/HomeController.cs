@@ -61,7 +61,7 @@ namespace ProjetoWeb.Controllers
         public IActionResult Remover(int id)
         {
             _itemAlugadoDAO.Remover(id);
-            return RedirectToAction("Index", "Home");
+            return RedirectToAction("CarrinhoAlugueis", "Home");
         }
     }
 }
