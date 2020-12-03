@@ -148,7 +148,6 @@ C:\Users\Weyquos\source\repos\ProjetoWeb\ProjetoWeb\bin\Debug\netcoreapp3.1\tr\M
 C:\Users\Weyquos\source\repos\ProjetoWeb\ProjetoWeb\bin\Debug\netcoreapp3.1\zh-Hans\Microsoft.CodeAnalysis.Workspaces.resources.dll
 C:\Users\Weyquos\source\repos\ProjetoWeb\ProjetoWeb\bin\Debug\netcoreapp3.1\zh-Hant\Microsoft.CodeAnalysis.Workspaces.resources.dll
 C:\Users\Weyquos\source\repos\ProjetoWeb\ProjetoWeb\obj\Debug\netcoreapp3.1\Razor\Views\Home\Index.cshtml.g.cs
-C:\Users\Weyquos\source\repos\ProjetoWeb\ProjetoWeb\obj\Debug\netcoreapp3.1\Razor\Views\Home\CarrinhoAlugueis.cshtml.g.cs
 C:\Users\Weyquos\source\repos\ProjetoWeb\ProjetoWeb\bin\Debug\netcoreapp3.1\Microsoft.AspNetCore.Cryptography.Internal.dll
 C:\Users\Weyquos\source\repos\ProjetoWeb\ProjetoWeb\bin\Debug\netcoreapp3.1\Microsoft.AspNetCore.Cryptography.KeyDerivation.dll
 C:\Users\Weyquos\source\repos\ProjetoWeb\ProjetoWeb\bin\Debug\netcoreapp3.1\Microsoft.AspNetCore.Identity.EntityFrameworkCore.dll
@@ -185,3 +184,4 @@ C:\Users\Weyquos\source\repos\ProjetoWeb\ProjetoWeb\bin\Debug\netcoreapp3.1\Micr
 C:\Users\Weyquos\source\repos\ProjetoWeb\ProjetoWeb\bin\Debug\netcoreapp3.1\Newtonsoft.Json.Bson.dll
 C:\Users\Weyquos\source\repos\ProjetoWeb\ProjetoWeb\obj\Debug\netcoreapp3.1\ProjetoWeb.csproj.CoreCompileInputs.cache
 C:\Users\Weyquos\source\repos\ProjetoWeb\ProjetoWeb\obj\Debug\netcoreapp3.1\ProjetoWeb.MvcApplicationPartsAssemblyInfo.cache
+C:\Users\Weyquos\source\repos\ProjetoWeb\ProjetoWeb\obj\Debug\netcoreapp3.1\Razor\Views\Home\MeusFavoritos.cshtml.g.cs

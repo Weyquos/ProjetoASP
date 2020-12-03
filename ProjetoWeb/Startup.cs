@@ -31,6 +31,7 @@ namespace ProjetoWeb
             services.AddScoped<LivroDAO>();
             services.AddScoped<ItemAlugadoDAO>();
             services.AddScoped<CategoriaDAO>();
+            services.AddScoped<AluguelDAO>();
             services.AddScoped<Sessao>();
             services.AddHttpContextAccessor();
             services.AddDbContext<Context>(options => options.UseSqlServer(Configuration.GetConnectionString("Connection")));

@@ -13,15 +13,17 @@ namespace ProjetoWeb.Controllers
     public class HomeController : Controller
     {
         private readonly LivroDAO _livroDAO;
+        private readonly UsuarioDAO _usuarioDAO;
         private readonly CategoriaDAO _categoriaDAO;
         private readonly ItemAlugadoDAO _itemAlugadoDAO;
         private readonly Sessao _sessao;
-        public HomeController(LivroDAO livroDAO, CategoriaDAO categoriaDAO, ItemAlugadoDAO itemAlugadoDAO, Sessao sessao)
+        public HomeController(LivroDAO livroDAO, CategoriaDAO categoriaDAO, ItemAlugadoDAO itemAlugadoDAO, UsuarioDAO usuarioDAO, Sessao sessao)
         {
             _categoriaDAO = categoriaDAO;
             _livroDAO = livroDAO;
             _itemAlugadoDAO = itemAlugadoDAO;
             _sessao = sessao;
+            _usuarioDAO = usuarioDAO;
         }
         public IActionResult Index(int id)
         {
@@ -33,24 +35,25 @@ namespace ProjetoWeb.Controllers
             return View(_livroDAO.ListarPorCategoria(id));
         }
 
-        public IActionResult AdicionarAoCarrinho(int id)
+        public IActionResult AdicionarAoCarrinho(int id) //adicionar aos favoritos
         {
             Livro livro = _livroDAO.BuscarPorId(id);
+            var email = User.Identity.Name;
+            _usuarioDAO.BuscarPorEmail(email);
             ItemAlugado item = new ItemAlugado
             {
-                Livro = livro,
-                Quantidade = 1,
-                CarrinhoId = _sessao.BuscarCarrinhoId()
+                Livro = livro
+                //Usuario = 
             };
             _itemAlugadoDAO.Cadastrar(item);
-            return RedirectToAction("CarrinhoAlugueis");
+            return RedirectToAction("MeusFavoritos");
         }
 
-        public IActionResult CarrinhoAlugueis()
-        {
-            string carrinhoId = _sessao.BuscarCarrinhoId();
-            return View(_itemAlugadoDAO.ListarPorCarrinhoId(carrinhoId));
-        }
+        //public IActionResult MeusFavoritos()
+        //{
+           // string carrinhoId = _sessao.BuscarCarrinhoId();
+            //return View(_itemAlugadoDAO.ListarPorCarrinhoId(carrinhoId));
+       // }
         /* Adicionar na função a parte de puxar os itens alugados */
         [Authorize]
         public IActionResult MeusLivros()
@@ -61,7 +64,7 @@ namespace ProjetoWeb.Controllers
         public IActionResult Remover(int id)
         {
             _itemAlugadoDAO.Remover(id);
-            return RedirectToAction("CarrinhoAlugueis", "Home");
+            return RedirectToAction("MeusFavoritos", "Home");
         }
     }
 }

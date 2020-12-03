@@ -6,10 +6,10 @@ using System.Threading.Tasks;
 
 namespace ProjetoWeb.Models
 {
-    [Table("ItensAlugados")] //Itens favoritos
-    public class ItemAlugado : BaseModel
-    {     
-        public ItemAlugado()
+    [Table("Alugueis")]
+    public class Aluguel : BaseModel
+    {
+        public Aluguel()
         {
             Usuario = new Usuario();
             Livro = new Livro();

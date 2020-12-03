@@ -13,6 +13,7 @@ namespace ProjetoWeb.Models
         public DbSet<Livro> Livros { get; set; }
         public DbSet<Categoria> Categorias { get; set; }
         public DbSet<ItemAlugado> ItensAlugados { get; set; }
+        public DbSet<Aluguel> Alugueis { get; set; }
         public DbSet<UsuarioView> Usuarios { get; set; }
     }
 }
