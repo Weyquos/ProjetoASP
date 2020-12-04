@@ -11,7 +11,7 @@ namespace ProjetoWeb.DAL
     {
         private readonly Context _context;
         public ItemAlugadoDAO(Context context) => _context = context;
-        //public List<ItemAlugado> ListarPorCarrinhoId(string carrinhoId) => _context.ItensAlugados.Include(x => x.Livro.Categoria).Where(x => x.Id == carrinhoId).ToList();
+        public List<ItemAlugado> ListarPorCarrinhoId(string usuarioEmail) => _context.ItensAlugados.Include(x => x.Livro.Categoria).Where(x => x.Usuario.Email == usuarioEmail).ToList();
         public ItemAlugado BuscarPorId(int id) => _context.ItensAlugados.Find(id);
         public void Cadastrar(ItemAlugado item)
         {

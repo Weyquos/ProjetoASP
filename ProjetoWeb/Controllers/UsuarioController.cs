@@ -92,7 +92,7 @@ namespace ProjetoWeb.Controllers
             var name = User.Identity.Name;
             if(result.Succeeded)
             {
-                return RedirectToAction("CarrinhoAlugueis", "Home");
+                return RedirectToAction("MeusFavoritos", "Home");
             }
             ModelState.AddModelError("", "Email ou senha incorretos.");
             return View(usuarioView);

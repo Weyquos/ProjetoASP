@@ -29,6 +29,7 @@ namespace ProjetoWeb
         {
             //Configuração de injeção de dependência do Banco de Dados
             services.AddScoped<LivroDAO>();
+            services.AddScoped<UsuarioDAO>();
             services.AddScoped<ItemAlugadoDAO>();
             services.AddScoped<CategoriaDAO>();
             services.AddScoped<AluguelDAO>();

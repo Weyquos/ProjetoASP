@@ -116,18 +116,5 @@ namespace ProjetoWeb.Controllers
             return View(livro);
         }
 
-        public IActionResult Alugar(int id)
-        {
-            Livro livro = _livroDAO.BuscarPorId(id);
-            _livroDAO.Alugar(id, livro);
-            return RedirectToAction("Index", "Livro");
-        }
-
-        public IActionResult Devolver(int id)
-        {
-            Livro livro = _livroDAO.BuscarPorId(id);
-            _livroDAO.Devolver(id, livro);
-            return RedirectToAction("Index", "Livro");
-        }
     }
 }

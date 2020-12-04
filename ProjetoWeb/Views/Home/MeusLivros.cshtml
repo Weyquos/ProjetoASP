@@ -1,6 +1,9 @@
-﻿@model IEnumerable<ProjetoWeb.Models.Livro>
+﻿@model IEnumerable<ProjetoWeb.Models.Aluguel>
 
-@{ ViewData["Title"] = "MeusLivros"; }
+@{
+    ViewData["Title"] = "MeusLivros";
+}
+
 
 <fieldset>
     <legend>Livros Alugados</legend>
@@ -8,13 +11,13 @@
         <thead>
             <tr>
                 <th>
-                    @Html.DisplayNameFor(model => model.Nome)
+                    @Html.DisplayNameFor(model => model.Livro.Nome)
                 </th>
                 <th>
-                    @Html.DisplayNameFor(model => model.Autor)
+                    @Html.DisplayNameFor(model => model.Livro.Autor)
                 </th>
                 <th>
-                    @Html.DisplayNameFor(model => model.Editora)
+                    @Html.DisplayNameFor(model => model.Livro.Editora)
                 </th>
                 <th>
                     Alugado Em
@@ -27,22 +30,21 @@
             {
                 <tr>
                     <td>
-                        @Html.DisplayFor(modelItem => item.Nome)
+                        @Html.DisplayFor(modelItem => item.Livro.Nome)
                     </td>
                     <td>
-                        @Html.DisplayFor(modelItem => item.Autor)
+                        @Html.DisplayFor(modelItem => item.Livro.Autor)
                     </td>
                     <td>
-                        @Html.DisplayFor(modelItem => item.Editora)
+                        @Html.DisplayFor(modelItem => item.Livro.Editora)
                     </td>
                     <td>
-                        @Html.DisplayFor(modelItem => item.CriadoEm)
+                        @Html.DisplayFor(modelItem => item.Livro.CriadoEm)
                     </td>
                     <td>
-                        <a asp-action="Devolver" asp-controller="Livro" asp-route-id="@item.Id" class="btn btn-warning">Devolver</a>
+                        <a asp-action="Devolver" asp-controller="Home" asp-route-id="@item.Livro.Id" class="btn btn-warning">Devolver</a>
                     </td>
-                </tr>
-
+                </tr>            
             }
         </tbody>
     </table>

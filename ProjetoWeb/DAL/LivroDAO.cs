@@ -15,7 +15,6 @@ namespace ProjetoWeb.DAL
         public Livro BuscarPorId(int id) => _context.Livros.Find(id);
         public Livro BuscarPorNome(string nome) => _context.Livros.FirstOrDefault(x => x.Nome == nome);
         public List<Livro> ListarPorCategoria(int id) => _context.Livros.Where(x => x.CategoriaId == id).ToList();
-
         public List<Livro> ListarLivrosLocados() => _context.Livros.Include(x => x.Categoria).Where(x => x.Status.Equals("Locado")).ToList();
         public bool Cadastrar(Livro livro)
         {
@@ -36,46 +35,6 @@ namespace ProjetoWeb.DAL
         {
             _context.Livros.Update(livro);
             _context.SaveChanges();
-        }
-
-        public bool Alugar(int id, Livro livro)
-        {
-
-            {
-                if (livro.Status == "Disponível")
-                {
-                    livro.Status = "Locado";
-                    _context.Livros.Update(livro);
-                    _context.SaveChanges();
-                    return true;
-                }
-
-                if (livro.Status == "Locado")
-                {
-                    return false;
-                }
-            }
-            return false;
-        }
-
-        public bool Devolver(int id, Livro livro)
-        {
-
-            {
-                if (livro.Status == "Locado")
-                {
-                    livro.Status = "Disponível";
-                    _context.Livros.Update(livro);
-                    _context.SaveChanges();
-                    return true;
-                }
-
-                if (livro.Status == "Disponível")
-                {
-                    return false;
-                }
-            }
-            return false;
         }
     }
 }

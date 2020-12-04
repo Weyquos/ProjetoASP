@@ -178,10 +178,10 @@ C:\Users\Weyquos\source\repos\ProjetoWeb\ProjetoWeb\obj\Debug\netcoreapp3.1\Razo
 C:\Users\Weyquos\source\repos\ProjetoWeb\ProjetoWeb\obj\Debug\netcoreapp3.1\Razor\Views\Usuario\Index.cshtml.g.cs
 C:\Users\Weyquos\source\repos\ProjetoWeb\ProjetoWeb\obj\Debug\netcoreapp3.1\Razor\Views\Usuario\Login.cshtml.g.cs
 C:\Users\Weyquos\source\repos\ProjetoWeb\ProjetoWeb\obj\Debug\netcoreapp3.1\Razor\Views\Livro\Detalhes.cshtml.g.cs
-C:\Users\Weyquos\source\repos\ProjetoWeb\ProjetoWeb\obj\Debug\netcoreapp3.1\Razor\Views\Home\MeusLivros.cshtml.g.cs
 C:\Users\Weyquos\source\repos\ProjetoWeb\ProjetoWeb\bin\Debug\netcoreapp3.1\Microsoft.AspNetCore.JsonPatch.dll
 C:\Users\Weyquos\source\repos\ProjetoWeb\ProjetoWeb\bin\Debug\netcoreapp3.1\Microsoft.AspNetCore.Mvc.NewtonsoftJson.dll
 C:\Users\Weyquos\source\repos\ProjetoWeb\ProjetoWeb\bin\Debug\netcoreapp3.1\Newtonsoft.Json.Bson.dll
 C:\Users\Weyquos\source\repos\ProjetoWeb\ProjetoWeb\obj\Debug\netcoreapp3.1\ProjetoWeb.csproj.CoreCompileInputs.cache
 C:\Users\Weyquos\source\repos\ProjetoWeb\ProjetoWeb\obj\Debug\netcoreapp3.1\ProjetoWeb.MvcApplicationPartsAssemblyInfo.cache
 C:\Users\Weyquos\source\repos\ProjetoWeb\ProjetoWeb\obj\Debug\netcoreapp3.1\Razor\Views\Home\MeusFavoritos.cshtml.g.cs
+C:\Users\Weyquos\source\repos\ProjetoWeb\ProjetoWeb\obj\Debug\netcoreapp3.1\Razor\Views\Home\MeusLivros.cshtml.g.cs
