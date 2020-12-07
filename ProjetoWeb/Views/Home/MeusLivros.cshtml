@@ -28,8 +28,7 @@
         <tbody>
             @foreach (var item in Model)
             {
-                @if (item.Livro.Status == "Locado")
-                {
+                
                     <tr>
                         <td>
                             @Html.DisplayFor(modelItem => item.Livro.Nome)
@@ -47,7 +46,7 @@
                             <a asp-action="Devolver" asp-controller="Home" asp-route-id="@item.Livro.Id" class="btn btn-warning">Devolver</a>
                         </td>
                     </tr>
-                }
+                
             }
         </tbody>
     </table>

@@ -77,15 +77,8 @@ namespace ProjetoWeb.Controllers
                 Livro = livro,
                 Usuario = usuario
             };
-            if (_aluguelDAO.Alugar(id, livro, usuario))
-            {
-                return RedirectToAction("MeusLivros");
-            }
-            else
-            {
-                ModelState.AddModelError("", "O livro já está locado.");
-                return RedirectToAction("Index", "Home");
-            }
+            _aluguelDAO.Alugar(id, livro, usuario);
+            return RedirectToAction("MeusLivros");
         }
 
         [Authorize]
