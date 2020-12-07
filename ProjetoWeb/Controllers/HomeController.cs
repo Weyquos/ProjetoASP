@@ -48,6 +48,13 @@ namespace ProjetoWeb.Controllers
                 Livro = livro,
                 Usuario = usuario
             };
+            /*if (_itemAlugadoDAO.ValidarAdd(id))
+            {
+            _itemAlugadoDAO.Cadastrar(item);
+            return RedirectToAction("MeusFavoritos");
+            }
+            return RedirectToAction("Index", "Home");
+             */
             _itemAlugadoDAO.Cadastrar(item);
             return RedirectToAction("MeusFavoritos");
         }
@@ -59,7 +66,7 @@ namespace ProjetoWeb.Controllers
             return View(_itemAlugadoDAO.ListarPorCarrinhoId(email));
         }
 
-        public IActionResult Alugar(int id) 
+        public IActionResult Alugar(int id)
         {
             Livro livro = _livroDAO.BuscarPorId(id);
             string email = User.Identity.Name;
@@ -70,12 +77,15 @@ namespace ProjetoWeb.Controllers
                 Livro = livro,
                 Usuario = usuario
             };
-            if(_aluguelDAO.Alugar(id, livro, usuario))
+            if (_aluguelDAO.Alugar(id, livro, usuario))
             {
-                return RedirectToAction("MeusLivros");   
+                return RedirectToAction("MeusLivros");
             }
-            ModelState.AddModelError("", "O livro já está locado.");
-            return RedirectToAction("MeusLivros");
+            else
+            {
+                ModelState.AddModelError("", "O livro já está locado.");
+                return RedirectToAction("Index", "Home");
+            }
         }
 
         [Authorize]

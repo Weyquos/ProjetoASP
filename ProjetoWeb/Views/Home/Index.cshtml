@@ -23,7 +23,16 @@
             <a class="btn btn-primary" asp-action="AdicionarAoCarrinho" asp-controller="Home" asp-route-id="@livroCadastrado.Id">Adicionar aos Favoritos</a>
             <br />
             <br />
-            <a asp-action="Alugar" asp-controller="Home" asp-route-id="@livroCadastrado.Id" class="btn btn-primary">Alugar</a>
+            @if (livroCadastrado.Status == "Disponível")
+            {
+                <a asp-action="Alugar" asp-controller="Home" asp-route-id="@livroCadastrado.Id" class="btn btn-primary">Alugar</a>
+            }
+            else
+            {
+                <div class="form-group">
+                    <label class="text-danger">Livro Indisponível </label>
+                </div>
+            }
         </div>
         }
     </div>   

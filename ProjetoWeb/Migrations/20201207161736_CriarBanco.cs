@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace ProjetoWeb.Migrations
 {
-    public partial class AddTableUsuario : Migration
+    public partial class CriarBanco : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -40,11 +40,52 @@ namespace ProjetoWeb.Migrations
                     LockoutEnd = table.Column<DateTimeOffset>(nullable: true),
                     LockoutEnabled = table.Column<bool>(nullable: false),
                     AccessFailedCount = table.Column<int>(nullable: false),
-                    CriadoEm = table.Column<DateTime>(nullable: false)
+                    CriadoEm = table.Column<DateTime>(nullable: false),
+                    Cep = table.Column<string>(nullable: true),
+                    Uf = table.Column<string>(nullable: true),
+                    Cidade = table.Column<string>(nullable: true),
+                    Bairro = table.Column<string>(nullable: true),
+                    TipoLogradouro = table.Column<string>(nullable: true),
+                    Logradouro = table.Column<string>(nullable: true)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_AspNetUsers", x => x.Id);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "Categorias",
+                columns: table => new
+                {
+                    Id = table.Column<int>(nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    CriadoEm = table.Column<DateTime>(nullable: false),
+                    Nome = table.Column<string>(maxLength: 100, nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Categorias", x => x.Id);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "Usuarios",
+                columns: table => new
+                {
+                    Id = table.Column<int>(nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    CriadoEm = table.Column<DateTime>(nullable: false),
+                    Email = table.Column<string>(nullable: false),
+                    Senha = table.Column<string>(nullable: false),
+                    Cep = table.Column<string>(nullable: true),
+                    Uf = table.Column<string>(nullable: true),
+                    Cidade = table.Column<string>(nullable: true),
+                    Bairro = table.Column<string>(nullable: true),
+                    TipoLogradouro = table.Column<string>(nullable: true),
+                    Logradouro = table.Column<string>(nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Usuarios", x => x.Id);
                 });
 
             migrationBuilder.CreateTable(
@@ -153,6 +194,97 @@ namespace ProjetoWeb.Migrations
                         onDelete: ReferentialAction.Cascade);
                 });
 
+            migrationBuilder.CreateTable(
+                name: "Livros",
+                columns: table => new
+                {
+                    Id = table.Column<int>(nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    CriadoEm = table.Column<DateTime>(nullable: false),
+                    Status = table.Column<string>(nullable: true),
+                    Nome = table.Column<string>(maxLength: 100, nullable: false),
+                    Autor = table.Column<string>(maxLength: 100, nullable: false),
+                    Editora = table.Column<string>(maxLength: 100, nullable: false),
+                    NumPag = table.Column<int>(nullable: false),
+                    AnoPub = table.Column<int>(nullable: false),
+                    Imagem = table.Column<string>(nullable: true),
+                    CategoriaId = table.Column<int>(nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Livros", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_Livros_Categorias_CategoriaId",
+                        column: x => x.CategoriaId,
+                        principalTable: "Categorias",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "Alugueis",
+                columns: table => new
+                {
+                    Id = table.Column<int>(nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    CriadoEm = table.Column<DateTime>(nullable: false),
+                    UsuarioId = table.Column<string>(nullable: true),
+                    LivroId = table.Column<int>(nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Alugueis", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_Alugueis_Livros_LivroId",
+                        column: x => x.LivroId,
+                        principalTable: "Livros",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Restrict);
+                    table.ForeignKey(
+                        name: "FK_Alugueis_AspNetUsers_UsuarioId",
+                        column: x => x.UsuarioId,
+                        principalTable: "AspNetUsers",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Restrict);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "ItensAlugados",
+                columns: table => new
+                {
+                    Id = table.Column<int>(nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    CriadoEm = table.Column<DateTime>(nullable: false),
+                    UsuarioId = table.Column<string>(nullable: true),
+                    LivroId = table.Column<int>(nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_ItensAlugados", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_ItensAlugados_Livros_LivroId",
+                        column: x => x.LivroId,
+                        principalTable: "Livros",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Restrict);
+                    table.ForeignKey(
+                        name: "FK_ItensAlugados_AspNetUsers_UsuarioId",
+                        column: x => x.UsuarioId,
+                        principalTable: "AspNetUsers",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Restrict);
+                });
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Alugueis_LivroId",
+                table: "Alugueis",
+                column: "LivroId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Alugueis_UsuarioId",
+                table: "Alugueis",
+                column: "UsuarioId");
+
             migrationBuilder.CreateIndex(
                 name: "IX_AspNetRoleClaims_RoleId",
                 table: "AspNetRoleClaims",
@@ -191,10 +323,28 @@ namespace ProjetoWeb.Migrations
                 column: "NormalizedUserName",
                 unique: true,
                 filter: "[NormalizedUserName] IS NOT NULL");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_ItensAlugados_LivroId",
+                table: "ItensAlugados",
+                column: "LivroId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_ItensAlugados_UsuarioId",
+                table: "ItensAlugados",
+                column: "UsuarioId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Livros_CategoriaId",
+                table: "Livros",
+                column: "CategoriaId");
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
         {
+            migrationBuilder.DropTable(
+                name: "Alugueis");
+
             migrationBuilder.DropTable(
                 name: "AspNetRoleClaims");
 
@@ -211,10 +361,22 @@ namespace ProjetoWeb.Migrations
                 name: "AspNetUserTokens");
 
             migrationBuilder.DropTable(
+                name: "ItensAlugados");
+
+            migrationBuilder.DropTable(
+                name: "Usuarios");
+
+            migrationBuilder.DropTable(
                 name: "AspNetRoles");
 
             migrationBuilder.DropTable(
+                name: "Livros");
+
+            migrationBuilder.DropTable(
                 name: "AspNetUsers");
+
+            migrationBuilder.DropTable(
+                name: "Categorias");
         }
     }
 }

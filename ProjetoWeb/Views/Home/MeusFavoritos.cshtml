@@ -26,7 +26,10 @@
                         <td>
                             <div>
                                 <a asp-action="Remover" asp-controller="Home" asp-route-id="@item.Id" class="btn btn-danger">Remover</a>
-                                <a asp-action="Alugar" asp-controller="Home" asp-route-id="@item.Livro.Id" class="btn btn-success">Alugar</a>
+                                @if (item.Livro.Status == "Disponível")
+                                {
+                                    <a asp-action="Alugar" asp-controller="Home" asp-route-id="@item.Livro.Id" class="btn btn-success">Alugar</a>
+                                }  
                             </div>
                         </td>
                     </tr>

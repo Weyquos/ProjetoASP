@@ -28,23 +28,26 @@
         <tbody>
             @foreach (var item in Model)
             {
-                <tr>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.Livro.Nome)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.Livro.Autor)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.Livro.Editora)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.Livro.CriadoEm)
-                    </td>
-                    <td>
-                        <a asp-action="Devolver" asp-controller="Home" asp-route-id="@item.Livro.Id" class="btn btn-warning">Devolver</a>
-                    </td>
-                </tr>            
+                @if (item.Livro.Status == "Locado")
+                {
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Livro.Nome)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Livro.Autor)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Livro.Editora)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Livro.CriadoEm)
+                        </td>
+                        <td>
+                            <a asp-action="Devolver" asp-controller="Home" asp-route-id="@item.Livro.Id" class="btn btn-warning">Devolver</a>
+                        </td>
+                    </tr>
+                }
             }
         </tbody>
     </table>
